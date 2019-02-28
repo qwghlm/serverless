@@ -1,8 +1,7 @@
-'use strict';
-
 const { getMedia } = require("./lib/twitter.js");
+const { fetchLabelsFor } = require("./lib/rekognition.js");
 
-module.exports.tweets = async (event, context) => {
+async function tweets(event, context) {
 
   if (!event.queryStringParameters || !event.queryStringParameters.screen_name) {
     return {
@@ -14,11 +13,29 @@ module.exports.tweets = async (event, context) => {
   }
 
   const { screen_name } = event.queryStringParameters;
-  const result = await getMedia(screen_name);
+  let { tweets, error } = await getMedia(screen_name);
 
-  const statusCode = result.tweets ? 200 : 500;
+  if (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error }),
+    };
+  }
+
+  // Save killing the API!
+  tweets = tweets.slice(0, 3);
+  tweets = await Promise.all(tweets.map(async tweet => {
+    const labels = await fetchLabelsFor(tweet.media_url_https)
+    return {
+      ...tweet,
+      labels
+    };
+  }));
+
   return {
-    statusCode,
-    body: JSON.stringify(result),
+    statusCode: 200,
+    body: JSON.stringify({ tweets }),
   };
 };
+
+module.exports = { tweets };

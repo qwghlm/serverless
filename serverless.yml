@@ -17,3 +17,8 @@ functions:
 plugins:
   - serverless-offline
   - serverless-dotenv-plugin
+
+custom:
+  serverless-offline:
+      babelOptions:
+        presets: ["es2015"]

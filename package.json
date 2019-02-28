@@ -21,6 +21,9 @@
     "serverless-offline": "^4.6.0"
   },
   "dependencies": {
+    "node-rekognition": "^0.4.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
     "twitter": "^1.7.1"
   }
 }
