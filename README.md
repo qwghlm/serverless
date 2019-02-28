@@ -11,7 +11,7 @@ Creates a web endpoint that will:
 
 ## Dev work
 
-A `.env` file should be supplied with the following variables:
+A `.env.development` file should be supplied with the following variables:
 
     # Twitter API
     TWITTER_CONSUMER_KEY=
@@ -20,9 +20,9 @@ A `.env` file should be supplied with the following variables:
     TWITTER_ACCESS_TOKEN_SECRET=
 
     # AWS Rekognition
-    AWS_ACCESS_KEY_ID=
-    AWS_SECRET_ACCESS_KEY=
-    AWS_REGION=
+    REKOGNITION_ACCESS_KEY_ID=
+    REKOGNITION_SECRET_ACCESS_KEY=
+    REKOGNITION_REGION=
 
 To set up Twitter consumer keys & tokens, go to https://developer.twitter.com/en/apps
 
@@ -36,4 +36,12 @@ Then visit e.g. http://localhost:3000/tweets?screen_name=PAImages
 
 ## Deployment
 
-Not done yet!
+To deploy, we use [AWS's Parameters Manager](https://eu-west-1.console.aws.amazon.com/systems-manager/parameters). To upload keys, run
+
+  aws ssm put-parameter --type String --name TWITTER_CONSUMER_KEY --value <value>
+  aws ssm put-parameter --type String --name TWITTER_CONSUMER_SECRET --value <value>
+  aws ssm put-parameter --type String --name TWITTER_ACCESS_TOKEN_KEY --value <value>
+  aws ssm put-parameter --type String --name TWITTER_ACCESS_TOKEN_SECRET --value <value>
+  aws ssm put-parameter --type String --name REKOGNITION_ACCESS_KEY_ID --value <value>
+  aws ssm put-parameter --type String --name REKOGNITION_SECRET_ACCESS_KEY --value <value>
+  aws ssm put-parameter --type String --name REKOGNITION_REGION --value <value>
