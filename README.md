@@ -38,10 +38,10 @@ Then visit e.g. http://localhost:3000/tweets?screen_name=PAImages
 
 To deploy, we use [AWS's Parameters Manager](https://eu-west-1.console.aws.amazon.com/systems-manager/parameters). To upload keys, run
 
-  aws ssm put-parameter --type String --name TWITTER_CONSUMER_KEY --value <value>
-  aws ssm put-parameter --type String --name TWITTER_CONSUMER_SECRET --value <value>
-  aws ssm put-parameter --type String --name TWITTER_ACCESS_TOKEN_KEY --value <value>
-  aws ssm put-parameter --type String --name TWITTER_ACCESS_TOKEN_SECRET --value <value>
-  aws ssm put-parameter --type String --name REKOGNITION_ACCESS_KEY_ID --value <value>
-  aws ssm put-parameter --type String --name REKOGNITION_SECRET_ACCESS_KEY --value <value>
-  aws ssm put-parameter --type String --name REKOGNITION_REGION --value <value>
+    aws ssm put-parameter --type String --name TWITTER_CONSUMER_KEY --value <value>
+    aws ssm put-parameter --type String --name TWITTER_CONSUMER_SECRET --value <value>
+    aws ssm put-parameter --type String --name TWITTER_ACCESS_TOKEN_KEY --value <value>
+    aws ssm put-parameter --type String --name TWITTER_ACCESS_TOKEN_SECRET --value <value>
+    aws ssm put-parameter --type String --name REKOGNITION_ACCESS_KEY_ID --value <value>
+    aws ssm put-parameter --type String --name REKOGNITION_SECRET_ACCESS_KEY --value <value>
+    aws ssm put-parameter --type String --name REKOGNITION_REGION --value <value>
