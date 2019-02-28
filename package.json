@@ -18,5 +18,8 @@
   "homepage": "https://github.com/qwghlm/serverless#readme",
   "devDependencies": {
     "serverless-offline": "^4.6.0"
+  },
+  "dependencies": {
+    "twitter": "^1.7.1"
   }
 }
